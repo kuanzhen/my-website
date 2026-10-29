@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Orbit 命令行工具占位截图">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050b18"/>
+      <stop offset="1" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#ffffff" stroke-opacity="0.07"/>
+    </pattern>
+    <radialGradient id="glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0" stop-color="#93c5fd" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#93c5fd" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+  <circle cx="600" cy="330" r="300" fill="url(#glow)"/>
+  <rect x="330" y="200" width="540" height="300" rx="20" fill="none" stroke="#bfdbfe" stroke-opacity="0.5" stroke-width="3"/>
+  <circle cx="380" cy="240" r="7" fill="#93c5fd" fill-opacity="0.9"/>
+  <circle cx="405" cy="240" r="7" fill="#93c5fd" fill-opacity="0.6"/>
+  <circle cx="430" cy="240" r="7" fill="#93c5fd" fill-opacity="0.35"/>
+  <text x="380" y="330" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="34" fill="#dbeafe" fill-opacity="0.9">$ orbit deploy --now</text>
+  <text x="380" y="390" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="30" fill="#93c5fd" fill-opacity="0.7">✓ 12 modules ready</text>
+  <text x="380" y="445" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="30" fill="#bfdbfe" fill-opacity="0.45">▊</text>
+  <ellipse cx="600" cy="590" rx="180" ry="52" fill="none" stroke="#93c5fd" stroke-opacity="0.4" stroke-width="3" transform="rotate(-14 600 590)"/>
+  <circle cx="742" cy="548" r="14" fill="#93c5fd" fill-opacity="0.9"/>
+  <text x="600" y="700" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="32" letter-spacing="12" fill="#bfdbfe" fill-opacity="0.85">ORBIT</text>
+</svg>

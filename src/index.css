@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* 文档与构建产物里出现的类名字面量不应进入产物，否则会生成用不到的样式 */
+@source not "../openspec";
+@source not "../dist";
+@source not "../.claude";
+
+/* 必须在 @import 之后声明：把 dark: 变体从 prefers-color-scheme 改为类名驱动，使其可被按钮切换 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  姓名字族：系统楷体栈，不加载任何字体文件。
+  优先繁体楷体（姓名以繁体呈现），再逐级回退到简体楷体与通用衬线。
+  注意 Android 默认没有楷体，会落到 serif；这是已知的降级，不是 bug。
+*/
+@theme {
+  --font-calligraphy: "Kaiti TC", "Kaiti SC", "STKaiti", "KaiTi", "DFKai-SB", "BiauKai", "AR PL UKai CN", serif;
+}
+
+/*
+  使用 @theme inline，使生成的工具类保留 var() 引用而不是固化取值，
+  这样 .dark 覆盖变量时无需重新生成 CSS。
+*/
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+}
+
+:root {
+  color-scheme: light;
+
+  --canvas: #f4f7fb;
+  --ink: #0f172a;
+  --ink-muted: #475569;
+  --line: #dbe3ef;
+  /* 亮色下必须比 cyan-600 更深：#0891b2 在最坏背景上仅 3.14:1，不满足正文 4.5:1 */
+  --accent: #0e7490;
+  /* 悬停态：必须比 accent 更深。用 accent 加透明度会与浅底混成更浅的颜色，白字掉到 4.07:1 */
+  --accent-strong: #0b5f77;
+
+  /* Hero 渐变色标 */
+  --glow-a: rgba(56, 189, 248, 0.45);
+  --glow-b: rgba(129, 140, 248, 0.4);
+  --glow-c: rgba(45, 212, 191, 0.35);
+
+  /* 内容层可读性遮罩 */
+  --scrim: rgba(244, 247, 251, 0.72);
+
+  /* Canvas 粒子配色，由 ParticleField 读取 */
+  --particle-color: rgba(8, 145, 178, 0.55);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --canvas: #050b18;
+  --ink: #e8eefc;
+  --ink-muted: #94a3b8;
+  --line: #1e2b45;
+  --accent: #22d3ee;
+  /* 暗色下按钮字为深色，悬停改为提亮而不是压暗 */
+  --accent-strong: #67e8f9;
+
+  --glow-a: rgba(6, 182, 212, 0.3);
+  --glow-b: rgba(99, 102, 241, 0.28);
+  --glow-c: rgba(20, 184, 166, 0.22);
+
+  --scrim: rgba(5, 11, 24, 0.6);
+
+  --particle-color: rgba(103, 232, 249, 0.75);
+}
+
+@layer base {
+  /*
+    刻意不写 scroll-behavior: smooth。实测（Chrome）html 上的 smooth 会让
+    scrollTo(x, y)、scrollTop 赋值乃至 behavior:'auto' 全部走平滑滚动，与自研的
+    逐帧滚动动画叠加后表现为「点击后先不动、然后慢慢起步」（Safari 更明显）。
+    平滑滚动统一由 smoothScroll.ts 的 scrollToHash 负责，CSS 侧保持默认 instant。
+  */
+  body {
+    @apply bg-canvas text-ink antialiased;
+  }
+}
+
+/*
+  滚动动画期间临时关闭毛玻璃：backdrop-filter 每帧都要重算，与滚回首页时大 canvas
+  的重新栅格化叠加会掉帧，表现为「点完等一会儿才动」。必须放在 @layer 之外，否则
+  盖不过 utilities 层的 backdrop-blur-md 与 supports-[backdrop-filter]:bg-canvas/70。
+  导航由 .nav-glass 标记，动画的 400ms 内退为不透明底，结束由 finishJsScroll 自动恢复。
+*/
+html.is-js-scrolling .nav-glass {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background-color: var(--canvas);
+}
+
+/*
+  首屏高度：先写 vh 再写 dvh 作回退。
+  不能直接同时挂 Tailwind 内置的 vh 与 dvh 两个高度工具类：
+  它们输出顺序固定，同优先级下 100vh 会盖住 100dvh。
+  写进同一个 @utility 才能控制声明顺序。
+*/
+@utility min-h-hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+}

@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "blockReadsOutsideWorkingDirectories": false,
+    "allow": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash(ls *)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(wc *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(sed -n *)",
+      "Bash(node -e *)",
+      "Bash(npm run *)",
+      "Bash(openspec *)",
+      "Bash(* | bash)",
+      "Bash(* | sh)",
+      "Bash(* <<EOF*)",
+      "Bash(* <<'EOF'*)",
+      "Bash(/Applications/Google Chrome.app/Contents/MacOS/Google Chrome *)",
+      "Bash(cd * && \"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless *)"
+    ]
+  },
+  "sandbox": {
+    "excludedCommands": [
+      "Bash(/Applications/Google Chrome.app/Contents/MacOS/Google Chrome *)",
+      "Bash(cd * && \"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless *)"
+    ]
+  }
+}

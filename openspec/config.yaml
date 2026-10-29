@@ -1,0 +1,28 @@
+schema: spec-driven
+
+context: |
+  项目：个人品牌站（Personal Website）
+  技术栈：React 19 + Vite 8 + TypeScript + Tailwind CSS v4
+  部署：GitHub Pages，base path 为 /my-website/
+  设计风格：科技感，动态粒子风，支持亮/暗主题切换
+  性能：首屏加载 < 2 秒，所有图片使用 lazy loading
+  语言规范：所有 OpenSpec 工件使用简体中文；代码、命令、API、文件路径等代码相关术语保留英文
+
+rules:
+  proposal:
+    - 必须明确写出 out-of-scope（不做什么）
+    - 必须评估对现有功能的影响
+  specs:
+    - 使用 Given/When/Then 结构描述交互行为（GIVEN 前置条件、WHEN 触发动作、THEN 预期结果）
+    - 每个 spec 必须包含至少一个边界或异常场景
+  tasks:
+    - 每个任务粒度不超过 30 分钟
+    - 按 Phase 分组，每个 Phase 结束后等待用户确认
+
+operations:
+  apply:
+    guidance:
+      - 严格按 Phase 顺序执行；每完成一个 Phase 后暂停，等待用户确认后再继续
+  archive:
+    guidance:
+      - 归档前用简体中文总结变更内容、验证结果与遗留风险

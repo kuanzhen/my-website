@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta id="theme-color-meta" name="theme-color" content="#f4f7fb" />
+    <title>寬真居士</title>
+    <script>
+      // 阻塞式执行，先于首屏绘制决定主题，避免暗色访客看到一帧亮色。
+      // 与 src/lib/theme.ts 使用同一个存储键；此处无法 import，故逻辑保持最小。
+      ;(function () {
+        try {
+          var stored = window.localStorage.getItem('theme')
+          var isDark =
+            stored === 'dark' ||
+            (stored !== 'light' &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches)
+          document.documentElement.classList.toggle('dark', isDark)
+          var meta = document.getElementById('theme-color-meta')
+          if (meta) meta.setAttribute('content', isDark ? '#050b18' : '#f4f7fb')
+        } catch (error) {
+          // 主题判定失败时按亮色渲染，不影响其余功能
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
