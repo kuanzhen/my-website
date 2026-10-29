@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="站主照片占位图">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050b18"/>
+      <stop offset="1" stop-color="#155e75"/>
+    </linearGradient>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M50 0H0V50" fill="none" stroke="#ffffff" stroke-opacity="0.06"/>
+    </pattern>
+    <radialGradient id="glow" cx="50%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#67e8f9" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#67e8f9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <rect width="800" height="1000" fill="url(#grid)"/>
+  <circle cx="400" cy="380" r="330" fill="url(#glow)"/>
+  <circle cx="400" cy="380" r="240" fill="none" stroke="#67e8f9" stroke-opacity="0.28" stroke-width="2"/>
+  <circle cx="400" cy="380" r="150" fill="#e8eefc" fill-opacity="0.14"/>
+  <path d="M150 1000 C170 720 290 610 400 610 C510 610 630 720 650 1000 Z" fill="#e8eefc" fill-opacity="0.1"/>
+  <circle cx="400" cy="380" r="88" fill="#e8eefc" fill-opacity="0.22"/>
+  <text x="400" y="905" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="34" letter-spacing="12" fill="#a5f3fc" fill-opacity="0.85">PORTRAIT</text>
+  <text x="400" y="947" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" letter-spacing="6" fill="#a5f3fc" fill-opacity="0.45">PLACEHOLDER</text>
+</svg>

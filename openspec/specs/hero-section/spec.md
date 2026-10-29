@@ -69,28 +69,36 @@ Hero SHALL 在水平与垂直方向居中呈现三组信息：姓名、职业、
 
 ### Requirement: Hero 提供指向项目的 CTA
 
-Hero SHALL 在自我介绍下方提供一个文案为「我的项目」的 CTA，指向站外链接。外链 MUST 以新标签页打开并带上 `rel="noopener noreferrer"`，且 MUST 让辅助技术知道它会在新标签页打开。目标地址尚未配置时，MUST 不渲染可点击的死链。
+Hero SHALL 在自我介绍下方提供一个文案为「我的项目」的 CTA，指向页面内锚点 `#projects`。点击该 CTA MUST 复用站点既有的平滑滚动机制滚动到项目展示区，MUST NOT 跳转站外、MUST NOT 打开新标签页、MUST NOT 刷新页面，地址栏 hash SHALL 同步为 `#projects`。CTA MUST 始终可点击，不再依赖外部链接是否配置，也不得出现 `target="_blank"` 或「在新标签页打开」的辅助说明。
 
 #### Scenario: 正常点击 CTA
 
-- **GIVEN** 站点已配置项目链接
+- **GIVEN** 访客位于首页首屏
 - **WHEN** 访客点击「我的项目」
-- **THEN** 浏览器在新标签页打开该链接
-- **AND** 当前页面停留在 Hero，不发生跳转或滚动
+- **THEN** 页面平滑滚动到 `#projects` 项目展示区
+- **AND** 当前页面不刷新、不打开新标签页
+- **AND** 地址栏 hash 变为 `#projects`
+
+#### Scenario: 目标顶部不被导航遮挡
+
+- **GIVEN** 导航栏固定在视口顶部
+- **WHEN** CTA 触发的滚动结束
+- **THEN** 项目展示区的标题完整可见
+- **AND** 标题不被导航栏覆盖
 
 #### Scenario: 用键盘触达 CTA
 
 - **GIVEN** 访客只使用键盘操作
 - **WHEN** 访客按 Tab 键移动焦点
 - **THEN** 焦点在主题切换控件之后到达 CTA，焦点指示清晰可见
-- **AND** 按 Enter 可触发跳转
+- **AND** 按 Enter 可触发滚动到项目展示区
 
-#### Scenario: 尚未配置项目链接
+#### Scenario: 减弱动效下的 CTA 跳转
 
-- **GIVEN** 站点主人还未提供项目链接地址
-- **WHEN** Hero 渲染完成
-- **THEN** CTA 以不可点击、不可聚焦的形态呈现，或被直接省略
-- **AND** 页面上不存在指向空地址、`#` 或占位域名的链接
+- **GIVEN** 访客的操作系统启用了「减弱动态效果」偏好
+- **WHEN** 访客点击「我的项目」
+- **THEN** 页面立即定位到 `#projects`，不出现滚动动画
+- **AND** 地址栏 hash 同样同步为 `#projects`
 
 #### Scenario: 两套主题下的按钮可读性
 

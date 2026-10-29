@@ -1,7 +1,9 @@
 import { Hero } from './components/Hero/Hero'
 import { NavBar } from './components/Navigation/NavBar'
+import { AboutSection } from './components/sections/AboutSection'
 import { PlaceholderSection } from './components/sections/PlaceholderSection'
 import { ProjectSection } from './components/sections/ProjectSection'
+import { ABOUT } from './data/about'
 import { PROJECTS } from './data/projects'
 
 const PROFILE = {
@@ -21,7 +23,9 @@ const CONTACT_SECTION = {
 function App() {
   return (
     <>
-      <NavBar />
+      <header>
+        <NavBar />
+      </header>
       <main>
         <Hero
           name={PROFILE.name}
@@ -34,6 +38,11 @@ function App() {
           id={CONTACT_SECTION.id}
           title={CONTACT_SECTION.title}
           description={CONTACT_SECTION.description}
+        />
+        <AboutSection
+          photo={ABOUT.photo}
+          paragraphs={ABOUT.paragraphs}
+          brand={ABOUT.brand}
         />
       </main>
     </>

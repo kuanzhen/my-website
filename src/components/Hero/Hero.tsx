@@ -18,6 +18,7 @@ export function Hero({ name, role, intro, projectsLabel }: HeroProps) {
   return (
     <section
       id="home"
+      aria-labelledby="hero-title"
       /* scroll-mt-20 需与导航栏 h-16 保持同步 */
       className="relative isolate flex min-h-hero scroll-mt-20 flex-col items-center justify-center overflow-hidden px-6 py-24 [@media(max-height:32rem)]:pt-20 [@media(max-height:32rem)]:pb-10"
     >
@@ -32,7 +33,10 @@ export function Hero({ name, role, intro, projectsLabel }: HeroProps) {
 
       <div className="relative z-30 flex w-full max-w-2xl flex-col items-center text-center">
         {/* 展示字体只有 Regular：挂 font-bold 会让浏览器合成假粗体，笔画糊成一团 */}
-        <h1 className="font-calligraphy text-balance text-6xl leading-[1.15] tracking-[0.05em] sm:text-7xl [@media(max-height:32rem)]:text-5xl">
+        <h1
+          id="hero-title"
+          className="font-calligraphy text-balance text-6xl leading-[1.15] tracking-[0.05em] sm:text-7xl [@media(max-height:32rem)]:text-5xl"
+        >
           {name}
         </h1>
 

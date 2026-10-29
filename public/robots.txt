@@ -1,0 +1,15 @@
+# GitHub Pages 项目站点只从域名根读取 robots.txt。
+# 本文件发布在 https://kuanzhen.github.io/my-website/robots.txt，
+# 而 Googlebot 读取的是 https://kuanzhen.github.io/robots.txt；
+# 当前部署下真正生效的放行声明是 index.html 中的
+# <meta name="robots" content="index, follow, max-image-preview:large">。
+# 迁移到自有域名或用户站点根目录后，本文件立即生效。
+
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /

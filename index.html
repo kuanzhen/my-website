@@ -6,7 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
     <meta id="theme-color-meta" name="theme-color" content="#f4f7fb" />
-    <title>寬真居士</title>
+    <title>寬真居士 · 全栈工程师 | 个人品牌站</title>
+    <meta
+      name="description"
+      content="寬真居士的个人品牌站：全栈工程师，喜欢儒释道传统文化，自认为是马列主义者的 AI coder。这里收录他的项目与思考。"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://kuanzhen.github.io/my-website/" />
+
+    <!-- 修改身份文案时，以下 title、description、canonical、Open Graph、Twitter Card 与 JSON-LD 需同步更新 -->
+    <meta property="og:title" content="寬真居士 · 全栈工程师 | 个人品牌站" />
+    <meta
+      property="og:description"
+      content="寬真居士的个人品牌站：全栈工程师，喜欢儒释道传统文化，自认为是马列主义者的 AI coder。这里收录他的项目与思考。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kuanzhen.github.io/my-website/" />
+    <meta property="og:site_name" content="寬真居士" />
+    <meta property="og:locale" content="zh_CN" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="寬真居士 · 全栈工程师 | 个人品牌站" />
+    <meta
+      name="twitter:description"
+      content="寬真居士的个人品牌站：全栈工程师，喜欢儒释道传统文化，自认为是马列主义者的 AI coder。这里收录他的项目与思考。"
+    />
     <script>
       // 阻塞式执行，先于首屏绘制决定主题，避免暗色访客看到一帧亮色。
       // 与 src/lib/theme.ts 使用同一个存储键；此处无法 import，故逻辑保持最小。
@@ -28,6 +52,18 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "寬真居士",
+        "jobTitle": "全栈工程师",
+        "description": "喜欢儒释道传统文化，自认为是马列主义者的 AI coder",
+        "url": "https://kuanzhen.github.io/my-website/",
+        "sameAs": ["https://github.com/kuanzhen"]
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

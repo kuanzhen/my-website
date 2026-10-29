@@ -13,10 +13,16 @@ export function PlaceholderSection({ id, title, description }: PlaceholderSectio
   return (
     <section
       id={id}
+      aria-labelledby={`${id}-title`}
       /* scroll-mt-20 需与导航栏 h-16 保持同步 */
       className="flex min-h-hero scroll-mt-20 flex-col items-center justify-center border-t border-line px-6 py-24 text-center"
     >
-      <h2 className="text-3xl font-semibold tracking-wide text-ink sm:text-4xl">{title}</h2>
+      <h2
+        id={`${id}-title`}
+        className="text-3xl font-semibold tracking-wide text-ink sm:text-4xl"
+      >
+        {title}
+      </h2>
       <p className="mt-4 max-w-md text-pretty text-base text-ink-muted">{description}</p>
     </section>
   )

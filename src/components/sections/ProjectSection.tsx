@@ -13,11 +13,17 @@ export function ProjectSection({ projects }: ProjectSectionProps) {
   return (
     <section
       id="projects"
+      aria-labelledby="projects-title"
       /* scroll-mt-20 需与导航栏 h-16 保持同步 */
       className="scroll-mt-20 border-t border-line px-6 py-24"
     >
       <div className="mx-auto w-full max-w-6xl">
-        <h2 className="text-3xl font-semibold tracking-wide text-ink sm:text-4xl">项目</h2>
+        <h2
+          id="projects-title"
+          className="text-3xl font-semibold tracking-wide text-ink sm:text-4xl"
+        >
+          项目
+        </h2>
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
